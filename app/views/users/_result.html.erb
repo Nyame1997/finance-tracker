@@ -1,0 +1,14 @@
+<div class="results-block">
+	<%= render 'layouts/messages' %>
+</div>
+
+
+<% if @stock %>
+
+	<div class="card card-header results-block">
+		<b>Symbol:</b> <%= @stock.ticker %>
+		<b>Name:</b> <%= @stock.name %>
+		<b>Last Price:</b> <%= @stock.last_price %>
+	</div>
+
+<% end %>
