@@ -1,4 +1,5 @@
 @import 'bootstrap/dist/css/bootstrap';
+@import "font-awesome";
 
 .navbar {
 	background-color: #FDF6EA !important;
@@ -9,10 +10,26 @@
 .navbar-brand {
 	font-size: 3rem;
 }
-
+*/
  
 
 h1 {
-	color: red;
+	padding-top: 10px;
 }
-*/
+
+
+.search-area {
+	padding-top: 50px;
+}
+
+.no-right-padding {
+	padding-right: 0 !important;
+}
+
+.no-left-padding {
+	padding-left: 0 !important;
+}
+
+.results-block {
+	display: inline-block;
+}
