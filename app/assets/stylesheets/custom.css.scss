@@ -1,10 +1,6 @@
 @import 'bootstrap/dist/css/bootstrap';
 @import "font-awesome";
 
-.navbar {
-	background-color: #FDF6EA !important;
-}
-
  
 /*
 .navbar-brand {
@@ -32,4 +28,13 @@ h1 {
 
 .results-block {
 	display: inline-block;
+	margin-bottom: 1rem;
+}
+
+h1 {
+	padding-top: 25px;
+}
+
+.logout-button {
+	margin-right: 5px;
 }
