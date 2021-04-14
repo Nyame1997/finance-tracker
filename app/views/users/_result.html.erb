@@ -9,6 +9,8 @@
 		<b>Symbol:</b> <%= @stock.ticker %>
 		<b>Name:</b> <%= @stock.name %>
 		<b>Last Price:</b> <%= @stock.last_price %>
+		<%= link_to 'Add to Portfolio', user_stocks_path(user: current_user, ticker:@stock.ticker),
+					class: "mr-2 btn btn-success", method: :post %>
 	</div>
 
 <% end %>
