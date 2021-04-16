@@ -1,0 +1,14 @@
+<div class="results-block">
+	<%= render 'layouts/messages' %>
+</div>
+
+
+<% if @friend %>
+
+	<div class="card card-header results-block">
+		<b>Name:</b> <%= @friend %>
+		<b>Email:</b> <%= @friend %>
+		<%= link_to 'Add to Friends', '#', class: "mr-2 btn btn-success", method: :post %>
+	</div>
+
+<% end %>
