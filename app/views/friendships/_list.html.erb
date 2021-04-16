@@ -1,0 +1,27 @@
+<% if !@friends.empty? %>
+	<div class="row">
+		<div class="col-9">
+			<table class="table table-bordered table-hover table-dark">
+			  <thead>
+			    <tr>
+			      <th scope="col">Name</th>
+			      <th scope="col">Email</th>
+			      <th scope="col">Actions</th>
+			    </tr>
+			  </thead>
+			  <tbody>
+			  	<% @friends.each do |friend| %>
+			    <tr>
+			      <th scope="row"><%= friend.full_name %></th>
+			      <td scope="row"><%= friend.email %></td>
+			      <td id="align-button" ><%= link_to 'Stop Following', friendships_path(friend), method: :delete, data: {confirm: 'Are you sure?' },
+			      				class: "btn btn-lg btn-warning" %></td>
+			    </tr>
+			    <% end %>
+			  </tbody>
+			</table>
+		</div>
+	</div>
+<% else %>
+	<%= 'You currently do not have any friends.' %>
+<% end %>
