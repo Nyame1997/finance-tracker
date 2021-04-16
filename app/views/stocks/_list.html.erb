@@ -16,8 +16,23 @@
 			      <th scope="row"><%= stock.ticker %></th>
 			      <td><%= stock.name %></td>
 			      <td><%= stock.last_price %></td>
-			      <td id="align-button" ><%= link_to 'Remove', user_stock_path(stock), method: :delete, data: {confirm: 'Are you sure?' },
-			      				class: "btn btn-lg btn-warning" %></td>
+			      <td id="align-button" >
+			      	<% if @user == current_user %>
+			      		<%= link_to 'Remove', user_stock_path(stock), method: :delete, data: {confirm: 'Are you sure?' }, class: "btn btn-lg btn-warning" %>
+			      	<% else %>
+			      		<% if current_user.can_track_stock?(stock.ticker) %>
+			      			<%= link_to 'Add to Portfolio', user_stocks_path(user: current_user, ticker: stock.ticker), class: "mr-2 btn btn-success", method: :post %>
+			      		<% else %>
+			      			<span class="badge badge-lg badge-secondary">
+			      				<% if current_user.stock_already_tracked?(stock.ticker) %>
+			      					Tracked
+			      				<% else %>
+			      					Already Tracking 10 Stocks
+			      				<% end %>
+			      			<span>
+			      		<% end %>
+			      	<% end %>
+			      </td>
 			    </tr>
 			    <% end %>
 			  </tbody>
@@ -25,5 +40,13 @@
 		</div>
 	</div>
 <% else %>
-	<%= 'You are currently not tracking any stocks.' %>
+	<% if @user == current_user %>
+		<p class="lead">
+			<%= 'You are currently not tracking any stocks.' %>
+		</p>
+	<% else %>
+		<p class="lead">
+			<%= 'This user is currently not tracking any stocks.' %>
+		</p>
+	<% end %>
 <% end %>

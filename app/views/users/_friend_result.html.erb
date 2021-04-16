@@ -3,12 +3,31 @@
 </div>
 
 
-<% if @friend %>
-
-	<div class="card card-header results-block">
-		<b>Name:</b> <%= @friend %>
-		<b>Email:</b> <%= @friend %>
-		<%= link_to 'Add to Friends', '#', class: "mr-2 btn btn-success", method: :post %>
-	</div>
+<% if @friends %>
+	
+		<div class="card card-header results-block">
+			<table class="col-md-12">
+				<tbody>
+					<% @friends.each do |friend| %>
+						<tr>
+							<td>
+								<b>Name:</b> <%= friend.full_name %>
+							</td>
+							<td>
+								<b>Email:</b> <%= friend.email %>
+							</td>
+							<td>
+								<%= link_to 'View Profile', user_path(friend), class: "btn btn-primary" %> 
+								<% if current_user.not_friends_with?(friend.id) %>
+									<%= link_to 'Add to Friends', friendships_path(friend: friend), class: "mr-2 btn btn-success", method: :post %>
+								<% else %>
+									<b class="badge badge-secondary">Friend<b>
+								<% end %>
+							</td>
+						</tr>
+					<% end %>
+				</tbody>
+			</table>
+		</div>
 
 <% end %>

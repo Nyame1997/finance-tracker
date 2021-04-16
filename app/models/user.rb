@@ -29,6 +29,14 @@ class User < ApplicationRecord
     "Anonymous"
   end
 
+  def except_current_user(users)
+    users.reject { |user| user.id == self.id }
+  end
+
+  def not_friends_with?(friend_id)
+    !self.friends.where(id: friend_id).exists?
+  end
+
   def self.search(param)
     param.strip!
     to_send_back = (first_name_matches(param) + last_name_matches(param) + email_matches(param)).uniq

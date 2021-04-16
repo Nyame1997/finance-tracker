@@ -14,8 +14,10 @@
 			    <tr>
 			      <th scope="row"><%= friend.full_name %></th>
 			      <td scope="row"><%= friend.email %></td>
-			      <td id="align-button" ><%= link_to 'Stop Following', friendships_path(friend), method: :delete, data: {confirm: 'Are you sure?' },
-			      				class: "btn btn-lg btn-warning" %></td>
+			      <td id="align-button" >
+			      	<%= link_to 'View Profile', user_path(friend), class: "btn btn-primary" %>
+			      	<%= link_to 'Stop Following', friendship_path(friend), method: :delete, data: {confirm: 'Are you sure?' }, class: "btn btn-warning" %>
+			      </td>
 			    </tr>
 			    <% end %>
 			  </tbody>
